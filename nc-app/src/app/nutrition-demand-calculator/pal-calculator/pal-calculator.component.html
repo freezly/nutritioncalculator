@@ -1,0 +1,88 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title translate>ndc.pal.title</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ng-container *ngIf="basicData as bd; else noBmr">
+      <div class="ion-text-end" *ngIf="!edit">
+        <ion-button color="secondary" fill="clear" (click)="edit = true; saveEdit()">
+          <ion-label translate>ndc.pal.editButton</ion-label>
+          <ion-icon slot="start" name="create-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-list lines="none">
+        <ion-item-sliding *ngFor="let met of metUserData.entries">
+          <ion-item>
+            <ion-label class="ion-text-wrap">
+              {{ met.amountHours | number: '1.0-1' }}h {{ met.met.name }} (PAL:
+              {{ met.met.value | number: '1.1-2' }})</ion-label
+            >
+            <ion-button *ngIf="edit" slot="end" fill="clear" (click)="plus(met)">
+              <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-button *ngIf="edit" slot="start" fill="clear" (click)="minus(met)">
+              <ion-icon slot="icon-only" name="remove-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+
+          <ion-item-options side="start" *ngIf="edit">
+            <ion-item-option (click)="delete(met)" color="danger">
+              <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+
+        <ion-item>
+          <ion-label>
+            <h1>
+              <span translate>ndc.pal.sumText</span>
+              <span>{{ sum }}h</span>
+            </h1>
+            <p translate>ndc.pal.sumTextEnd</p>
+          </ion-label>
+
+          <ng-container *ngIf="sum === 24; else sumNotOK">
+            <ion-icon slot="start" color="success" name="checkmark-outline"></ion-icon>
+          </ng-container>
+          <ng-template #sumNotOK>
+            <ion-icon slot="start" color="danger" name="close-outline"></ion-icon>
+          </ng-template>
+        </ion-item>
+      </ion-list>
+
+      <div class="ion-text-start ion-padding-bottom" *ngIf="edit">
+        <ion-button fill="clear" (click)="addEntry()">
+          <ion-label translate>ndc.pal.addButton</ion-label>
+          <ion-icon slot="start" name="add-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <div class="ion-text-end" *ngIf="edit">
+        <ion-button [disabled]="sum !== 24" color="secondary" (click)="saveClicked()">
+          <ion-label translate>ndc.pal.saveButton</ion-label>
+          <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-item-divider>
+        <ion-label translate>ndc.pal.calculatedValues</ion-label>
+      </ion-item-divider>
+      <ion-grid *ngIf="metUserData as met">
+        <ion-row>
+          <ion-col size="9">
+            <strong translate>ndc.pal.palSumText</strong>
+          </ion-col>
+          <ion-col> {{ met.palPerDay | number: '1.1-1' }} </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="bd.bmr">
+          <ion-col size="9">
+            <strong translate>ndc.pal.bmrWithActivityText</strong>
+          </ion-col>
+          <ion-col> {{ met.palPerDay * bd.bmr | number: '1.0-0' }} kcal</ion-col>
+        </ion-row>
+      </ion-grid></ng-container
+    >
+    <ng-template #noBmr>
+      <ion-label color="danger" translate>ndc.pal.noBmr </ion-label>
+    </ng-template>
+  </ion-card-content>
+</ion-card>

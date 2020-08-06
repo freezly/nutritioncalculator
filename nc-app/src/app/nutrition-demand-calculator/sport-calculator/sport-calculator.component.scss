@@ -1,0 +1,20 @@
+.inputSport {
+  border-bottom: 1px solid lightgrey;
+  text-align: center;
+}
+
+.dayColumn div {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+}
+
+ion-row {
+  height: 100%;
+}
+
+.calculatedText {
+  font-weight: bold;
+}

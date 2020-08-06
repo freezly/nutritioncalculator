@@ -1,0 +1,7 @@
+{
+  "name": "nutrition calculator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

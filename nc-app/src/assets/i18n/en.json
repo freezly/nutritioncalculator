@@ -1,0 +1,87 @@
+{
+  "ndc": {
+    "title": "Nutrition Calculator",
+    "basic": {
+      "title": "Basic Informations",
+      "age": "Age",
+      "weight": "Weight (kg)",
+      "height": "Height (cm)",
+      "gender": "Gender",
+      "idealWeight": "ideal weight: ",
+      "idealWeightHint": "by BMI ",
+      "female": "Female",
+      "male": "Male",
+      "inputs": "Inputs",
+      "calculations": "calculated Values",
+      "currentBmi": "current BMI",
+      "proteinDemand": "Proteindemand",
+      "proteinDemandHint": "without Sport by 2gr/kg",
+      "open": "show inputs",
+      "close": "hide inputs",
+      "bmr": "Basal metabolic rate"
+    },
+    "pal": {
+      "title": "daily workload (PAL)",
+      "nameColumn": "Activity",
+      "hourColumn": "Hours",
+      "palColumn": "PAL",
+      "addButton": "Add entry",
+      "sumText": "Sum hours: ",
+      "sumTextEnd": "must be equal 24h",
+      "saveButton": "save",
+      "editButton": "edit PAL Data",
+      "palSumText": "calculated daily PAL",
+      "bmrWithActivityText": "daily calory demand (Basal metabolic rate + Activity)",
+      "calculatedValues": "calculated Values",
+      "noBmr": "basic information not available. Please fill it first."
+    },
+    "sport": {
+      "monday": "Mo",
+      "tuesday": "Tue",
+      "wednesday": "We",
+      "thursday": "Thu",
+      "friday": "Fr",
+      "saturday": "Sa",
+      "sunday": "Su",
+      "dayColumn": "Day",
+      "lightColumn": "light",
+      "mediumColumn": "medium",
+      "hardColumn": "hard",
+      "calculations": "calculated Values",
+      "title": "individuell sport",
+
+      "dailyCalories": "average bmr per day",
+      "dailySportsCalories": "average consumption because of sport",
+      "kcal": "kcal"
+    },
+    "nutrition": {
+      "monday": "Mo",
+      "tuesday": "Tue",
+      "wednesday": "We",
+      "thursday": "Thu",
+      "friday": "Fr",
+      "saturday": "Sa",
+      "sunday": "Su",
+      "dayColumn": "Day",
+      "proteinColumn": "protein",
+      "carbColumn": "carbs",
+      "fatColumn": "fat",
+      "title": "Nutritions",
+      "subtitle": "increased protein demand because of sport is allready considered",
+      "type": "Nutritiontype",
+      "ketogen": "Ketogenic",
+      "carnivore": "Carnivore",
+      "lowcarb": "Low Carb",
+      "normal": "Average",
+      "highcarb": "High Carb",
+      "eigeneverteilung": "manual set carb share",
+      "manualCarbshare": "Carb share in %"
+    }
+  },,
+  "menu": {
+    "impressum": "Impressum",
+    "newversion": "New version is available. Do you want to update?",
+    "approve": "Yes, please update.",
+    "ndc": "Nutrition Demand Calculator"
+  }
+}

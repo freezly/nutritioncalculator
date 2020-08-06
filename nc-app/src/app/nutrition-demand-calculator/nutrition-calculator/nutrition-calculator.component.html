@@ -1,0 +1,105 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title translate>ndc.nutrition.title</ion-card-title>
+    <ion-card-subtitle translate>ndc.nutrition.subtitle</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ng-container *ngIf="bmrWithPal; else noBmr">
+      <ion-item>
+        <ion-label position="floating" translate>ndc.nutrition.type</ion-label>
+        <ion-select
+          [(ngModel)]="nutritionData.carbShare"
+          interface="action-sheet"
+          (ionChange)="calculateNutritions(); save()"
+        >
+          <ion-select-option *ngFor="let t of nutritionType" [value]="t.value">
+            {{ 'ndc.nutrition.' + t.name | translate }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="nutritionData.carbShare < 0">
+        <ion-label position="floating" translate>ndc.nutrition.manualCarbshare</ion-label>
+        <ion-input
+          type="number"
+          [(ngModel)]="nutritionData.manualCarbShare"
+          (keyup)="calculateNutritions(); save()"
+        ></ion-input>
+      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <strong translate>ndc.nutrition.dayColumn</strong>
+          </ion-col>
+          <ion-col class="ion-text-center"> <strong translate>ndc.nutrition.proteinColumn</strong> </ion-col>
+          <ion-col class="ion-text-center"> <strong translate>ndc.nutrition.carbColumn</strong> </ion-col>
+          <ion-col class="ion-text-center"> <strong translate>ndc.nutrition.fatColumn</strong> </ion-col>
+        </ion-row>
+        <ng-container *ngFor="let ne of nutritionEntries; let index = index">
+          <ion-row [ngClass]="{ evenRow: 0 === index % 2 }" class="increasedFontSize">
+            <ion-col class="dayColumn" size="2">
+              <div>{{ 'ndc.nutrition.' + ne.day | translate }}</div>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <ion-label>
+                <p>
+                  <ion-label class="increasedFontSize bold" color="secondary"
+                    >{{ ne.protein.kcal | number: '1.0-0' }} kcal</ion-label
+                  >
+                </p>
+                <p>
+                  <ion-label class="increasedFontSize bold" color="dark"
+                    >{{ ne.protein.weight | number: '1.0-0' }} gr</ion-label
+                  >
+                </p>
+                <p>
+                  <ion-label class="increasedFontSize bold" color="success"
+                    >{{ ne.protein.percent | number: '1.0-0' }} %</ion-label
+                  >
+                </p>
+              </ion-label>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <p>
+                <ion-label class="increasedFontSize bold" color="secondary"
+                  >{{ ne.carbs.kcal | number: '1.0-0' }} kcal</ion-label
+                >
+              </p>
+              <p>
+                <ion-label class="increasedFontSize bold" color="dark"
+                  >{{ ne.carbs.weight | number: '1.0-0' }} gr</ion-label
+                >
+              </p>
+              <p>
+                <ion-label class="increasedFontSize bold" color="success"
+                  >{{ ne.carbs.percent | number: '1.0-0' }} %
+                </ion-label>
+              </p>
+            </ion-col>
+            <ion-col class="ion-text-center">
+              <ion-label>
+                <p>
+                  <ion-label class="increasedFontSize bold" color="secondary"
+                    >{{ ne.fat.kcal | number: '1.0-0' }} kcal</ion-label
+                  >
+                </p>
+                <p>
+                  <ion-label class="increasedFontSize bold" color="dark"
+                    >{{ ne.fat.weight | number: '1.0-0' }} gr</ion-label
+                  >
+                </p>
+                <p>
+                  <ion-label class="increasedFontSize bold" color="success"
+                    >{{ ne.fat.percent | number: '1.0-0' }} %</ion-label
+                  >
+                </p>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+      </ion-grid>
+    </ng-container>
+    <ng-template #noBmr>
+      <ion-label color="danger" translate>ndc.nutrition.noBmr</ion-label>
+    </ng-template>
+  </ion-card-content>
+</ion-card>

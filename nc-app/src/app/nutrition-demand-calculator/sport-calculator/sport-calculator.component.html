@@ -1,0 +1,88 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title translate>ndc.sport.title</ion-card-title>
+  </ion-card-header>
+  <ion-card-content *ngIf="sportData">
+    <div class="ion-text-end" *ngIf="!showInputs">
+      <ion-button color="secondary" (click)="toggleShow()" fill="clear" slot="end">
+        <ion-label translate>ndc.sport.open</ion-label>
+        <ion-icon slot="start" name="create-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <strong translate>ndc.sport.dayColumn</strong>
+        </ion-col>
+        <ion-col class="ion-text-center"> <strong translate>ndc.sport.lightColumn</strong> </ion-col>
+        <ion-col class="ion-text-center"> <strong translate>ndc.sport.mediumColumn</strong> </ion-col>
+        <ion-col class="ion-text-center"> <strong translate>ndc.sport.hardColumn</strong> </ion-col>
+        <ion-col class="ion-text-center" *ngIf="!showInputs"> <strong translate>ndc.sport.kcal</strong> </ion-col>
+      </ion-row>
+      <ng-container *ngIf="showInputs; else noEdit">
+        <ion-row *ngFor="let se of sportData.entries">
+          <ion-col class="dayColumn"
+            ><div>{{ 'ndc.sport.' + se.day | translate }}</div>
+          </ion-col>
+          <ion-col>
+            <ion-input class="inputSport" color="primary" type="number" [(ngModel)]="se.lightMinutes"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input class="inputSport" color="primary" type="number" [(ngModel)]="se.mediumMinutes"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input class="inputSport" color="primary" type="number" [(ngModel)]="se.hardMinutes"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+      <ng-template #noEdit>
+        <ion-row *ngFor="let se of sportData.entries">
+          <ion-col style="vertical-align: middle;">
+            <strong>{{ 'ndc.sport.' + se.day | translate }}</strong>
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <ion-label> {{ se.lightMinutes }}</ion-label>
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <ion-label> {{ se.mediumMinutes }}</ion-label>
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <ion-label> {{ se.hardMinutes }}</ion-label>
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <ion-label>
+              {{
+                (se.hardMinutes ? se.hardMinutes : 0) * kalories.hard +
+                  (se.mediumMinutes ? se.mediumMinutes : 0) * kalories.medium +
+                  (se.lightMinutes ? se.lightMinutes : 0) * kalories.light
+              }}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ng-template>
+    </ion-grid>
+
+    <div class="ion-text-end" *ngIf="showInputs">
+      <ion-button color="secondary" (click)="toggleShow(); saveSport()">
+        <ion-label translate>ndc.sport.close</ion-label>
+        <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-item-divider>
+      <ion-label translate> ndc.sport.calculations </ion-label>
+    </ion-item-divider>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9" class="calculatedText" translate>ndc.sport.dailySportsCalories</ion-col>
+        <ion-col>{{ dailySportsCalories | number: '1.0-0' }} kcal</ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="9" class="calculatedText" translate>ndc.sport.dailyCalories</ion-col>
+        <ion-col>{{ dailyCalories | number: '1.0-0' }} kcal</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

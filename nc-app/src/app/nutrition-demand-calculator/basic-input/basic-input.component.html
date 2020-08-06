@@ -1,0 +1,138 @@
+<ion-card *ngIf="basicData as bd">
+  <ion-card-header>
+    <ion-card-title translate>ndc.basic.title</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <div class="ion-text-end" *ngIf="!showInputs">
+      <ion-button color="secondary" (click)="toggleShow()" fill="clear" slot="end">
+        <ion-label translate>ndc.basic.open</ion-label>
+        <ion-icon slot="start" name="create-outline"></ion-icon>
+      </ion-button>
+    </div>
+    <ion-list lines="none" *ngIf="showInputs">
+      <ion-item-divider>
+        <ion-label translate> ndc.basic.inputs </ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label position="floating" translate>ndc.basic.age</ion-label>
+        <ion-input type="number" [(ngModel)]="bd.age"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" translate>ndc.basic.weight</ion-label>
+        <ion-input type="number" [(ngModel)]="bd.weight"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" translate>ndc.basic.height</ion-label>
+        <ion-input type="number" [(ngModel)]="bd.height"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" translate>ndc.basic.gender</ion-label>
+        <ion-select [(ngModel)]="bd.gender">
+          <ion-select-option value="f" translate> ndc.basic.female</ion-select-option>
+          <ion-select-option value="m" translate> ndc.basic.male</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <div class="ion-text-end" *ngIf="showInputs">
+      <ion-button color="secondary" (click)="toggleShow(); save()">
+        <ion-label translate>ndc.basic.close</ion-label>
+        <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-item-divider>
+      <ion-label translate> ndc.basic.calculations </ion-label>
+    </ion-item-divider>
+    <ion-grid>
+      <ion-row *ngIf="!showInputs">
+        <ion-col>
+          <strong translate>ndc.basic.age</strong>
+        </ion-col>
+        <ion-col>
+          <ion-label>{{ bd.age | number: '1.0-0' }}</ion-label>
+        </ion-col>
+        <ion-col> </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!showInputs">
+        <ion-col>
+          <strong translate>ndc.basic.gender</strong>
+        </ion-col>
+        <ion-col>
+          <ion-label *ngIf="bd.gender === 'f'" translate>ndc.basic.female</ion-label>
+          <ion-label *ngIf="bd.gender === 'm'" translate>ndc.basic.male</ion-label>
+        </ion-col>
+        <ion-col> </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!showInputs">
+        <ion-col>
+          <strong translate>ndc.basic.weight</strong>
+        </ion-col>
+        <ion-col>
+          <ion-label>{{ bd.weight | number: '1.1-1' }}</ion-label>
+        </ion-col>
+        <ion-col> </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!showInputs">
+        <ion-col>
+          <strong translate>ndc.basic.height</strong>
+        </ion-col>
+        <ion-col>
+          <ion-label>{{ bd.height | number: '1.0-0' }}</ion-label>
+        </ion-col>
+        <ion-col> </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <strong translate>ndc.basic.idealWeight</strong>
+        </ion-col>
+        <ion-col
+          ><ion-label>{{ bd.idealWeight | number: '1.1-1' }}kg</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-note>
+            <span translate>ndc.basic.idealWeightHint</span>
+            <span>{{ idealWeightBmi }}</span>
+          </ion-note>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <strong translate>ndc.basic.bmr</strong>
+        </ion-col>
+        <ion-col>
+          <ion-label>{{ bd.bmr | number: '1.0-0' }}kcal</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-note translate>ndc.basic.bmrHint </ion-note>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <strong translate>ndc.basic.currentBmi</strong>
+        </ion-col>
+        <ion-col>
+          <ion-label>{{ bd.currentBmi | number: '1.1-1' }}</ion-label>
+        </ion-col>
+        <ion-col> </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <strong translate>ndc.basic.proteinDemand</strong>
+        </ion-col>
+        <ion-col>
+          <ion-label>{{ bd.proteinDemand | number: '1.0-0' }}gr</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-note translate>ndc.basic.proteinDemandHint </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

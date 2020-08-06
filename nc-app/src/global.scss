@@ -1,0 +1,108 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import '~@ionic/angular/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+.top50 {
+  padding-top: 50px;
+}
+
+.top20 {
+  padding-top: 20px;
+}
+
+.top30 {
+  padding-top: 30px;
+}
+
+.top10 {
+  padding-top: 10px;
+}
+
+.top40 {
+  padding-top: 40px;
+}
+
+.top100 {
+  padding-top: 100px;
+}
+
+.premiumBadge {
+  border: 1px solid lightblue;
+  font-size: 75%;
+  color: #333;
+  background-color: lightskyblue;
+  margin-left: 10px;
+}
+
+.lightBlueBadge {
+  border: 1px solid lightblue;
+  font-size: 75%;
+  color: #333;
+  background-color: lightskyblue;
+}
+
+.greyBadge {
+  border: 1px solid grey;
+}
+
+.lightGreenBadge {
+  border: 1px solid lightseagreen;
+  background-color: lightseagreen;
+  color: #333;
+}
+
+.yellowBadge {
+  border: 1px solid yellow;
+  background-color: yellow;
+  color: #333;
+}
+
+.greenBadge {
+  border: 1px solid seagreen;
+  background-color: seagreen;
+  color: #ebebeb;
+}
+
+.greenBadge,
+.lightGreenBadge,
+.greyBadge,
+.lightBlueBadge,
+.yellowBadge,
+.premiumBadge {
+  font-size: 80%;
+  font-weight: bold;
+  margin-right: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.popoverMenu .popover-content {
+  min-width: 350px;
+}
