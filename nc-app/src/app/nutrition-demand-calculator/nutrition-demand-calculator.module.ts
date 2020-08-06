@@ -9,6 +9,7 @@ import { NutritionCalculatorComponent } from './nutrition-calculator/nutrition-c
 import { NutritionDemandCalculatorPageRoutingModule } from './nutrition-demand-calculator-routing.module';
 import { NutritionDemandCalculatorPage } from './nutrition-demand-calculator.page';
 import { PalCalculatorComponent } from './pal-calculator/pal-calculator.component';
+import { PoweredByComponent } from './powered-by/powered-by.component';
 import { SportCalculatorComponent } from './sport-calculator/sport-calculator.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { SportCalculatorComponent } from './sport-calculator/sport-calculator.co
     NutritionDemandCalculatorPage,
     BasicInputComponent,
     ContentContainerComponent,
+    PoweredByComponent,
   ],
 })
 export class NutritionDemandCalculatorPageModule {}

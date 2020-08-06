@@ -1,0 +1,26 @@
+<ion-list lines="none">
+  <ion-item (click)="toggleShow()">
+    <ion-label class="ion-text-wrap" color="primary">
+      <span>powered by </span>
+      <span *ngIf="!showPoweredBy">withYourCoach</span>
+    </ion-label>
+    <ion-icon slot="end" color="medium" name="chevron-forward-outline" *ngIf="!showPoweredBy"></ion-icon>
+    <ion-icon slot="end" color="medium" name="chevron-down-outline" *ngIf="showPoweredBy"></ion-icon>
+  </ion-item>
+
+  <ion-item-group *ngIf="showPoweredBy">
+    <ion-item-divider>
+      <ion-img style="width: 150px;" src="/assets/wi-logo.png"></ion-img>
+    </ion-item-divider>
+
+    <ion-item [detail]="false" href="https://www.withyourcoach.com" target="blank">
+      <ion-note slot="start">Website</ion-note>
+      <ion-label color="tertiary">https://www.withyourcoach.com </ion-label>
+    </ion-item>
+
+    <ion-item [detail]="false" href="https://app.withyourcoach.com" target="blank">
+      <ion-note slot="start">WebApp</ion-note>
+      <ion-label color="tertiary">https://app.withyourcoach.com </ion-label>
+    </ion-item>
+  </ion-item-group>
+</ion-list>
