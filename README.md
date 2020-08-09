@@ -3,7 +3,7 @@ This is an App to calculate nutrition demands with reference to body data and sp
 
 # Install
 - download from releases or build from source
-- extract files and upload to your webhoster
+- extract files and upload to your webhoster (https needed)
 - add an impressum.html file into the same folder
 - open browser and navigate to your URL
 
